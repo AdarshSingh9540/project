@@ -1,21 +1,28 @@
 import React, { useState } from 'react';
-import { Helper } from './Helper';
 import { HiArrowNarrowRight, HiChevronRight, HiChevronLeft } from 'react-icons/hi';
+import { interviewRounds } from './Helper';
 
-const TestPage: React.FC = () => {
-    const [questionIndex, setQuestionIndex] = useState(0);
-    const [round, setRound] = useState(1);
+function TestPage(): JSX.Element {
+    const [roundIndex, setRoundIndex] = useState(0); // Current round index
+    const [questionIndex, setQuestionIndex] = useState(0); // Current question index
 
-    const questions = Helper();
-
-    const handleNext = () => {
-        setQuestionIndex((prevIndex) => (prevIndex + 1) % questions.length);
+    const handlePreviousRound = () => {
+        setRoundIndex(prevIndex => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
     };
 
-    const handlePrevious = () => {
-        setRound((prevRound) => (prevRound > 1 ? prevRound - 1 : prevRound));
+    const handleNextRound = () => {
+        setRoundIndex(prevIndex => (prevIndex < interviewRounds.length - 1 ? prevIndex + 1 : prevIndex));
+        setQuestionIndex(0); // Reset question index when changing round
     };
-    
+
+    const handlePreviousQuestion = () => {
+        setQuestionIndex(prevIndex => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
+    };
+
+    const handleNextQuestion = () => {
+        const currentRoundQuestions = interviewRounds[roundIndex].questions;
+        setQuestionIndex(prevIndex => (prevIndex < currentRoundQuestions.length - 1 ? prevIndex + 1 : prevIndex));
+    };
 
     return (
         <>
@@ -23,39 +30,31 @@ const TestPage: React.FC = () => {
                 <div className='bg-gray-300 text-white w-full sm:w-3/12 m-8 ml-16 mr-1 mb-4 sm:mb-0 rounded-2xl'>
                     <div className='text-black text-center flex flex-col'>
                         <div className='bg-gray-400 flex items-center justify-center rounded-full p-4 m-4'>
-                            <button className='bg-blue-600 text-white flex items-center p-2 px-6 rounded-lg'
-                                 onClick={handlePrevious}
-                            >
+                            <button className='bg-blue-600 text-white flex items-center p-2 px-6 rounded-lg' onClick={handlePreviousRound}>
                                 <HiChevronLeft />
                             </button>
-                            <div className="text-2xl font-bold mx-6">Round {round}</div>
-                            <button className='bg-blue-600 text-white flex items-center p-2 px-6 rounded-lg'
-                                onClick={() => setRound((prevRound) => prevRound + 1)}
-                            >
+                            <div className="text-2xl font-bold mx-6">{interviewRounds[roundIndex].round_name}</div>
+                            <button className='bg-blue-600 text-white flex items-center p-2 px-6 rounded-lg' onClick={handleNextRound}>
                                 <HiChevronRight />
                             </button>
                         </div>
                         <div className='font-semibold text-lg mt-4'>
-                            <p>{questions[questionIndex]}</p>
+                            <p>{interviewRounds[roundIndex].questions[questionIndex]}</p>
                         </div>
-                        <div className='flex justify-between mt-6 mx-8'>
-                        </div>
+                       
                     </div>
                 </div>
                 <div className='bg-gray-300 text-white w-full sm:w-8/12 m-6 mr-8 rounded-2xl shadow-2xl'>
-                    <textarea className='border w-full h-full text-black p-3 text-lg' name="" id="" cols="140" rows="22"></textarea>
+                    <textarea className='border w-full h-full text-black p-3 text-lg' name="" id="" cols={140} rows={22}></textarea>
                 </div>
             </div>
-
             <div className='flex items-center justify-end mr-10'>
-                <button className='bg-blue-600 text-white flex items-center p-2 px-6 rounded-lg'
-                    onClick={handleNext}
-                >
+                <button className='bg-blue-600 text-white flex items-center p-2 px-6 rounded-lg' onClick={handleNextQuestion}>
                     Next <HiArrowNarrowRight className='ml-2' />
                 </button>
             </div>
         </>
     );
-};
+}
 
 export default TestPage;

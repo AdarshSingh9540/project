@@ -1,26 +1,43 @@
 import React from 'react';
 
-export const Helper: React.FC = () => {
-    const questions = [
-        "What is closure in JavaScript?",
-        "Explain the concept of hoisting in JavaScript.",
-        "What is a callback function in JavaScript?",
-        "What are the differences between var, let, and const in JavaScript?",
-        "Explain event bubbling and event capturing in JavaScript.",
-        "What are arrow functions in JavaScript and how do they differ from regular functions?",
-        "What is the difference between == and === in JavaScript?",
-        "Explain the concept of prototypal inheritance in JavaScript.",
-        "What are promises in JavaScript and how do they work?",
-        "What is the spread syntax (...) in JavaScript?",
-        "Explain the concept of Virtual DOM in React and how it contributes to performance optimization.",
-        "What are the differences between state and props in React?",
-        "How do you handle forms in React?",
-        "What is the role of keys in React lists?",
-        "What are React Hooks?",
-        "Explain the useEffect Hook in React.",
-        "What are controlled components in React?",
-        "What are the differences between class components and functional components in React?",
-    ];
+interface InterviewRound {
+    round_name: string;
+    questions: string[];
+}
 
-    return questions;
-};
+const interviewRounds: InterviewRound[] = [
+    {
+        round_name: "Round 1: Fundamentals",
+        questions: [
+            "What are the principles of design? How do you apply them in your design process?",
+            "What is the difference between a vector graphic and a raster graphic? When would you use each?",
+            "How do you ensure that your designs are accessible to people with disabilities?"
+        ]
+    },
+    {
+        round_name: "Round 2: Figma and Frimer",
+        questions: [
+            "What is your experience with Figma and Frimer? Can you explain their features and capabilities?",
+            "How do you use Figma and Frimer to collaborate with others in a design project?",
+            "Can you give an example of a project you worked on that required you to use both Figma and Frimer?"
+        ]
+    },
+    {
+        round_name: "Round 3: Photoshop and Canva",
+        questions: [
+            "What is your experience with Photoshop and Canva? Can you explain their features and capabilities?",
+            "How do you use Photoshop and Canva to create and edit images for design projects?",
+            "Can you give an example of a project you worked on that required you to use both Photoshop and Canva?"
+        ]
+    },
+    {
+        round_name: "Round 4: Soft Skills",
+        questions: [
+            "Can you give an example of a time when you had to work with a difficult client or stakeholder? How did you handle the situation?",
+            "How do you stay up-to-date with the latest trends and skills in graphic design?",
+            "Can you describe a project you worked on that required you to communicate effectively with a non-technical stakeholder?"
+        ]
+    }
+];
+
+export { interviewRounds };
