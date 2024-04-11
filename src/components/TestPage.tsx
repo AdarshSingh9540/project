@@ -15,9 +15,9 @@ function TestPage(): JSX.Element {
         setQuestionIndex(0); // Reset question index when changing round
     };
 
-    const handlePreviousQuestion = () => {
-        setQuestionIndex(prevIndex => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
-    };
+    // const handlePreviousQuestion = () => {
+    //     setQuestionIndex(prevIndex => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
+    // };
 
     const handleNextQuestion = () => {
         const currentRoundQuestions = interviewRounds[roundIndex].questions;
@@ -38,7 +38,7 @@ function TestPage(): JSX.Element {
                                 <HiChevronRight />
                             </button>
                         </div>
-                        <div className='font-semibold text-lg mt-4'>
+                        <div className='font-semibold text-lg mt-4 p-3'>
                             <p>{interviewRounds[roundIndex].questions[questionIndex]}</p>
                         </div>
                        
