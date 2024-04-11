@@ -30,11 +30,11 @@ function TestPage(): JSX.Element {
                 <div className='bg-gray-300 text-white w-full sm:w-3/12 m-8 ml-16 mr-1 mb-4 sm:mb-0 rounded-2xl'>
                     <div className='text-black text-center flex flex-col'>
                         <div className='bg-gray-400 flex items-center justify-center rounded-full p-4 m-4'>
-                            <button className='bg-blue-600 text-white flex items-center p-2 px-6 rounded-lg' onClick={handlePreviousRound}>
+                            <button className='bg-gray-800 text-white flex items-center p-2 px-6 rounded-lg' onClick={handlePreviousRound}>
                                 <HiChevronLeft />
                             </button>
                             <div className="text-2xl font-bold mx-6">{interviewRounds[roundIndex].round_name}</div>
-                            <button className='bg-blue-600 text-white flex items-center p-2 px-6 rounded-lg' onClick={handleNextRound}>
+                            <button className='bg-gray-800 text-white flex items-center p-2 px-6 rounded-lg' onClick={handleNextRound}>
                                 <HiChevronRight />
                             </button>
                         </div>
@@ -49,7 +49,7 @@ function TestPage(): JSX.Element {
                 </div>
             </div>
             <div className='flex items-center justify-end mr-10'>
-                <button className='bg-blue-600 text-white flex items-center p-2 px-6 rounded-lg' onClick={handleNextQuestion}>
+                <button className='bg-gray-800 text-white flex items-center p-2 px-6 rounded-lg' onClick={handleNextQuestion}>
                     Next <HiArrowNarrowRight className='ml-2' />
                 </button>
             </div>
